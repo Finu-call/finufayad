@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #030305;
+  --color-dark-muted: #08080c;
+  --color-accent-blue: #00f0ff;
+  --color-accent-violet: #7000ff;
+  --color-accent-glow: #a855f7;
+  
+  --font-sans: 'Inter', 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Syne', 'Outfit', system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-dark text-white font-sans overflow-x-hidden selection:bg-accent-violet selection:text-white;
+    background-color: #030305;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+  .box-glow {
+    box-shadow: 0 0 30px rgba(112, 0, 255, 0.15);
+  }
+  .glassmorphism {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+  }
+  .glassmorphism-dark {
+    @apply bg-black/40 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)];
+  }
+  
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-500;
+  }
+  
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-blue via-accent-violet to-accent-glow;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030305; 
+}
+::-webkit-scrollbar-thumb {
+  background: #333; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* Hide default cursor on desktop since we have a custom one */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button, [role="button"], input, select, textarea {
+    cursor: none;
+  }
+}
